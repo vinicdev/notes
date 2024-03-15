@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Notes from "@/components/Notes";
 import NavBar from "@/components/navBar";
+import Header from "@/components/Header";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -18,7 +19,8 @@ export default async function ProtectedPage() {
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <NavBar />
 
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
+      <div className="animate-in w-full flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
+        <Header dataUser={user.id} />
         <main className="flex-1 flex flex-col gap-6">
           <Notes userId={user.id} />
         </main>
